@@ -1,3 +1,5 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import VS1H1
+
+admin.site.register(VS1H1)

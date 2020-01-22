@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+  </head>
+  <body>
+    <h1>Virtual State - Hub 1</h1>
+    <table class="table table-hover">
+      <tr>
+        <th><h2><i>Virtual State 1</i></h2></th>
+        <th><h2>Virtual State 2</h2></th>
+        <th><h2>Virtual State 3</h2></th>
+        <th><h2><i>Virtual State 4</i></h2></th>
+        <th><h2>Virtual State 5</h2></th>
+        <th><h2>Virtual State 6</h2></th>
+        <th><h2><i>Virtual State 7</i></h2></th>
+        <th><h2>Virtual State 8</h2></th>
+      </tr>
+    
+
+    <script type="text/javascript" src="{% static 'main.js' %}"></script>
+    <h1>Understanding Data Storage Overview</h1>
+    <table class="table table-hover">
+      <tr>
+        <th>Log_Time</th>
+        <th>Stakeholder_Name</th>
+        <th>Wake_up</th>
+        <th>Caffiene_Intake</th>
+        <th>Exercise_Description</th>
+        <th>Routine_Description</th>
+        <th>Review_Intention</th>
+        <th>Intended_Methods</th>
+        <th>Session_Duration</th>
+        <th>Integrate_Awakening</th>
+        <th>Delete?</th>
+      </tr>
+    {%for item in all_items%}
+     <tr>
+       <td>{{Log_Time}}</td>
+       <td>{{Stakeholder_Name}}</td>
+       <td>{{Wake_up_time}}</td>
+       <td>{{Review_Intention}}</td>
+       <td>{{Routine_Description}}</td>
+       <td>{{Intended_Methods}}</td>
+       <td>{{Session_Duration}}</td>
+       <td>{{Integrate_Awakening}}</td>
+       <td><a href="{% url 'delete' item.id %}">Delete</a></td>
+     </tr>
+    {% endfor %}
+    </table>
+    <br>
+
+    <form class="form-group" action="{% url 'home' %}" method="post">
+      {% csrf_token %}
+      <div class="form-group">
+          <label for="Log_Time">Log_Time</label><br>
+          <input type="text" name="Log_Time" placeholder="Enter the attribute that will uniquely identify each row:"><br>
+      </div>
+      <div class="form-group">
+          <label for="Stakeholder_Name">Stakeholder_Name</label><br>
+          <input type="text" name="Stakeholder_Name" placeholder="Enter the Location of Database:"><br>
+      </div>
+      <div class="form-group">
+          <label for="Wake_up_time">Wake_up_time</label><br>
+          <input type="text" name="Wake_up_time" placeholder="Enter the Domain Address within the Database Location"><br>
+      </div>
+      <div class="Review_Intention">
+          <label for="Review_Intention">Review_Intention</label><br>
+          <input type="text" name="Review_Intention" placeholder="Enter 1st Key point:"><br>
+      </div>
+      <div class="Routine_Description">
+          <label for="Routine_Description">Routine_Description</label><br>
+          <input type="text" name="Routine_Description" placeholder="Enter 2nd Key point:"><br>
+      </div>
+      <div class="form-group">
+          <label for="Intended_Methods">Intended_Methods</label><br>
+          <input type="text" name="Intended_Methods" placeholder="Enter 3rd Key point:"><br>
+      </div>
+      <div class="form-group">
+          <label for="Session_Duration">Session_Duration</label><br>
+          <input type="text" name="Session_Duration" placeholder="Enter 4th Key point:"><br>
+      </div>
+      <div class="form-group">
+          <label for="Integrate_Awakening">Integrate_Awakening</label><br>
+          <input type="text" name="Integrate_Awakening" placeholder="Enter 5th Key point:"><br>
+      </div>
+      <input type="submit" class="btn btn-primary" value="Submit"><br>
+      {% if messages %}
+        {% for message in messages %}
+          <h3>{{message}}</h3>
+        {% endfor %}
+      {% endif %}
+
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
